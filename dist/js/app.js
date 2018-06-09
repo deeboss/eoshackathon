@@ -75,3 +75,25 @@ $('#splitScreen').on("click", $(this), function(){
 // $(document).keypress(function(e) {
 // 	alert("hello");
 // }
+
+
+
+
+
+
+// API CALLS
+// $(document).on("click", '#callAPI', function(){
+// 	$.ajax({
+// 	  url: 'http://10.101.3.150:3000/balances',
+// 	  data: data,
+// 	  success: success,
+// 	  dataType: dataType
+// 	});
+// })
+
+
+$(document).on("click", '#callAPI', function(){
+	$.get( "http://10.101.3.150:3000/balances", function( data ) {
+	  alert( "Load was performed." );
+	});
+})
