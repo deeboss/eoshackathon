@@ -1,0 +1,88 @@
+/************************************************
+ ************************************************
+				Flexbox Mixins
+ ************************************************
+ ************************************************/
+
+@mixin flex {
+	display: -moz-flex; /* Firefox */
+	display: -webkit-flex; /* Safari */
+	display: flex;
+
+	@content;
+}
+
+@mixin flexDirection($direction) {
+	-moz-flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin flexJustify($justify) {
+	-webkit-justify-content: $justify;
+	-moz-justify-content: $justify;
+	justify-content: $justify;
+}
+
+@mixin flexWrap($wrap) {
+	-webkit-flex-wrap: $wrap;
+	-moz-flex-wrap: $wrap;
+	flex-wrap: $wrap;
+}
+
+@mixin flexAlign($alignment) {
+	-webkit-align-items: $alignment;
+	-moz-align-items: $alignment;
+	align-items: $alignment;
+}
+
+/************************************************
+ ************************************************
+							Media Queries Mixins
+ ************************************************
+ ************************************************/
+
+
+@mixin mobile-only {
+  @media only screen and (max-width: 599px) { @content; }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: 600px) { @content; }
+}
+
+@mixin mobile-to-tablet {
+  @media only screen and (max-width: 899px) { @content; }
+}
+
+@mixin tablet-large {
+  @media only screen and (min-width: 900px) { @content; }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1200px) { @content; }
+}
+
+@mixin desktop-large {
+  @media only screen and (min-width: 1400px) { @content; }
+}
+
+@mixin desktop-xl {
+  @media only screen and (min-width: 1800px) { @content; }
+}
+
+
+@mixin appearance($appearance) {
+  -webkit-appearance: $appearance;
+	-moz-appearance: $appearance;
+	-ms-appearance: $appearance;
+	-o-appearance: $appearance;
+	// appearance: $appearance;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+		-moz-transition: $transition;
+			-o-transition: $transition;
+				transition: $transition;
+}

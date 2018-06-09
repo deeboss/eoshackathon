@@ -1,0 +1,64 @@
+@mixin typography\small {
+	font-size: 1.5rem!important;
+
+	@include desktop {
+		font-size: 1.7rem!important;
+	}
+
+	@content;
+}
+
+
+html {
+	font-size: 62.5%;
+}
+
+body, input, textarea {
+	color: $black;
+	font-size: 1.65rem;
+	font-family: $bodyFont;
+  text-rendering: optimizeLegibility;
+
+	@include tablet {
+		font-size: 1.9rem;
+	}
+
+	@include desktop {
+		font-size: 2.1rem;
+	}
+}
+
+
+p.small {
+	font-size: small;
+}
+
+p.large {
+	font-size: larger;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $headerFont;
+	text-transform: uppercase;
+  	text-rendering: optimizeLegibility;
+  	font-weight: 500;
+}
+
+ul, ul li {
+	//list-style-type: none;
+}
+
+.xlarge {
+	font-size: x-large;
+	line-height: 140%;
+}
+
+.larger {
+	font-size: xx-large;
+	line-height: 200%;
+}
+
+.highlight {
+	color: blue;
+}

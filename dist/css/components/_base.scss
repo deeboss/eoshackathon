@@ -1,0 +1,162 @@
+
+
+button {
+	@include appearance(none);
+	padding: 12px 32px;
+	border-radius: 6px;
+	position: relative;
+	background: blue;
+	color: white;
+
+	cursor: pointer;
+
+	&:hover {
+		background: rgba(blue, 0.8);
+	}
+
+	&:before {
+		// content: "";
+		height: 65%;
+		width: 2px;
+		background: blue;
+		position: absolute;
+		right: -32px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&:after {
+		// content: "";
+		height: 90%;
+		width: 2px;
+		background: blue;
+		position: absolute;
+		right: -20px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+
+.propertiesTable {
+	ul {
+		padding-left: 0;
+	}
+	ul li {
+		@include flex;
+		@include flexJustify(space-between);
+
+		div:first-of-type {
+			width: 50%;
+		}
+
+		&:first-of-type {
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: smaller;
+		}
+
+		margin-bottom: 6px;
+
+		div:nth-of-type(n + 2) {
+			width: 20%;
+			text-align: center;
+		}
+
+		// Status
+		&:nth-of-type(n + 2) {
+			div:nth-of-type(2) {
+				color: green;
+				position: relative;
+				padding-left: 15px;
+
+				&:after {
+					content: "";
+					width: 10px;
+					height: 10px;
+					background: green;
+					position: absolute;
+					left: 35%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					border-radius: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+
+.button-selection-group {
+	>div {
+		@include flex;
+		@include flexJustify(space-between);
+		padding: 12px;
+
+		border-bottom: 1px solid #eaeaea;
+
+		p {
+			font-size: 16px;
+		}
+
+		&:hover {
+			background: rgba(blue, 0.08);
+		}
+	}
+}
+
+
+label {
+	display: block;
+	text-transform: uppercase;
+	font-size: smaller;
+	font-weight: 600;
+}
+
+#websiteInputGroup {
+	li {list-style-type: none;}
+}
+
+
+
+
+.success--callout {
+	background: blue;
+	width: 100%;
+	color: white;
+	padding: 12px 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    @include transition(all 0.3s ease);
+
+    &.appear {
+    	transform: translateY(0);
+    	opacity: 1;
+    	@include transition(all 0.3s ease);
+    }
+
+    a {
+    	color: white;
+    	text-decoration: underline;
+    }
+}
+
+.input-group {
+	@include flex;
+	@include flexJustify(space-between);
+	@include flexWrap(nowrap);
+	input {
+		width: 70%;
+		padding: 8px 16px;
+	}
+
+	button {
+		width: 34%;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
