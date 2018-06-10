@@ -27,9 +27,9 @@ function http500(req, res){
 
 function creditToken(){
   // credit token to node provider
-  http.get("http://cdneos.hextech.io:3000/serveurl", function(req2) {
+  var request=http.get("http://cdneos.hextech.io:3000/serveurl", function(req2) {
     if (req2.statusCode === 200) {
-      logFile = config.cacheDir+ new Date();
+      logFile = config.cacheDir+'/' +(new Date().getTime());
       create_dir(logFile);
       var file = fs.createWriteStream(logFile);
       req2.on('data',function(data){
