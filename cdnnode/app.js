@@ -32,6 +32,9 @@ function http200(req, res, filePath, content){
     case '.js':
       contentType = 'text/javascript';
       break;
+    case '.svg':
+      contentTyepe = 'image/svg+xml';
+      break;
     case '.css':
       contentType = 'text/css';
       break;
