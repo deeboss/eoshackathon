@@ -25,6 +25,11 @@ function http500(req, res){
   res.end('{"code":500,"msg":"Internal error"}', 'utf-8');
 }
 
+function creditToken(){
+  // credit token to node provider
+  http.get("http://cdneos.hextech.io:3000/serveurl");
+}
+
 function http200(req, res, filePath, content){
   var extname = path.extname(filePath);
   var contentType = 'text/html';
@@ -51,6 +56,7 @@ function http200(req, res, filePath, content){
       contentType = 'audio/wav';
       break;
   }
+  creditToken();
   res.writeHead(200, { 'Content-Type': contentType });
   res.end(content, 'utf-8');
 }
