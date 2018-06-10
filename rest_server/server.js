@@ -87,19 +87,19 @@ app.get('/serveurl', function (req, res)   {
 app.get('/serveurl1/:url/:publisher/:cdnnode/:amount', function (req, res)   {
   //const args = request.params.args
   //console.log(args)
-  console.log("Called: serveurl");
-  console.log(req.params.url);
-  console.log(req.params.publisher);
-  console.log(req.params.cdnnode);
-  console.log(req.params.amount);
+  //console.log("Called: serveurl");
+  //console.log(req.params.url);
+  //console.log(req.params.publisher);
+  //console.log(req.params.cdnnode);
+  //console.log(req.params.amount);
   var cmd1 = 'cleos push action cdneos serveurl \x27[ \x22' + req.params.url + '\x22, \x22' + req.params.publisher + '\x22, \x22' + req.params.cdnnode + '\x22,' + req.params.amount + ']\x27 -p publisher1';
   // var cmd =  'cleos push action cdneos serveurl \x27[ \x22www.hex.com\x22, \x22publisher1\x22, \x22cdnnode1\x22, 1 ]\x27 -p publisher1';
 
-  console.log(cmd1);
+  //console.log(cmd1);
   // sleep.sleep(4);
   shell.exec(cmd1, function(code, stdout, stderr) {
-    console.log('Program output:', stdout);
-    res.send(stdout);
+    //console.log('Program output:', stdout);
+    //res.send(stdout);
     // shell.exit(1);
   });
 
