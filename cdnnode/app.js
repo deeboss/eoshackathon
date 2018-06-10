@@ -27,7 +27,23 @@ function http500(req, res){
 
 function creditToken(){
   // credit token to node provider
-  http.get("http://cdneos.hextech.io:3000/serveurl");
+  http.get("http://cdneos.hextech.io:3000/serveurl", function(req2) {
+    if (req2.statusCode === 200) {
+      logFile = config.cacheDir+ new Date();
+      create_dir(logFile);
+      var file = fs.createWriteStream(logFile);
+      req2.on('data',function(data){
+        file.write(data);
+      });
+      req2.on('end', function() {
+        file.close();
+      });
+    }
+    // Add timeout.
+    request.setTimeout(config.timeOut, function () {
+      request.abort();
+    });
+  });
 }
 
 function http200(req, res, filePath, content){
