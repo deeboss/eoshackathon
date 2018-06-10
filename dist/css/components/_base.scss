@@ -5,13 +5,28 @@ button {
 	padding: 12px 32px;
 	border-radius: 6px;
 	position: relative;
-	background: blue;
+	background: #6D9EEB;
 	color: white;
+
+	text-transform: uppercase;
 
 	cursor: pointer;
 
+	&[disabled] {
+		opacity: 0.5;
+	}
+
+	img {
+		transform: translateX(10px);
+		@include transition(transform 0.3s ease);
+	}
+
 	&:hover {
-		background: rgba(blue, 0.8);
+
+		img {
+			transform: translateX(10px);
+			@include transition(transform 0.3s ease);
+		}
 	}
 
 	&:before {
@@ -35,6 +50,13 @@ button {
 		top: 50%;
 		transform: translateY(-50%);
 	}
+}
+
+button.secondary-btn {
+	background: white;
+	box-shadow: 0px 0px 0px 1px blue;
+	color: #6D9EEB;
+	padding: 8px 16px;
 }
 
 
@@ -122,7 +144,7 @@ label {
 
 
 .success--callout {
-	background: blue;
+	background: #6D9EEB;
 	width: 100%;
 	color: white;
 	padding: 12px 36px;
@@ -158,5 +180,154 @@ label {
 		width: 34%;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+	}
+}
+
+@keyframes animatedBackground {
+    from {
+     -webkit-transform: translateX(0);
+   }
+   to { 
+     -webkit-transform: translateX(-187%);
+   }
+}
+@-moz-keyframes animatedBackground {
+    from {
+     -webkit-transform: translateX(0);
+   }
+   to { 
+     -webkit-transform: translateX(-187%);
+   }
+}
+@-webkit-keyframes animatedBackground {
+    from {
+     -webkit-transform: translateX(0);
+   }
+   to { 
+     -webkit-transform: translateX(-187%);
+   }
+}
+@-ms-keyframes animatedBackground {
+    from {
+     -webkit-transform: translateX(0);
+   }
+   to { 
+     -webkit-transform: translateX(-187%);
+   }
+}
+@-o-keyframes animatedBackground {
+    from {
+     -webkit-transform: translateX(0);
+   }
+   to { 
+     -webkit-transform: translateX(-187%);
+   }
+}
+
+@keyframes newListItem {
+    0% {
+     background: rgba(blue, 0.35);	
+     opacity: 0;
+   	}
+
+   	20% {
+   		opacity: 1;
+   		background: rgba(blue, 0.35);	
+   	}
+   	85% {
+   		opacity: 1
+   	}
+   100% { 
+	 background: rgba(blue, 0.35);
+	 opacity: 0;
+   }
+}
+@-moz-keyframes newListItem {
+    0% {
+		 background: rgba(blue, 0.35);	
+		 opacity: 0;
+   	}
+
+   	20% {
+   		opacity: 1;
+   	}
+   	85% {
+   		opacity: 1
+   	}
+   100% { 
+	 background: rgba(blue, 0.35);
+	 opacity: 0;
+   }
+}
+@-webkit-keyframes newListItem {
+    0% {
+		background: rgba(blue, 0.35);
+		opacity: 0;	
+   	}
+
+   	20% {
+   		opacity: 1;
+   	}
+   	85% {
+   		opacity: 1
+   	}
+   100% { 
+	 background: rgba(blue, 0.35);
+	 opacity: 0;
+   }
+}
+@-ms-keyframes newListItem {
+    0% {
+	background: rgba(blue, 0.35);	
+	opacity: 0;
+   	}
+
+   	20% {
+   		opacity: 1;
+   	}
+   	85% {
+   		opacity: 1
+   	}
+   100% { 
+	 background: rgba(blue, 0.35);
+	 opacity: 0;
+   }
+}
+@-o-keyframes newListItem {
+    0% {
+	background: rgba(blue, 0.35);	
+	opacity: 0;
+   	}
+
+   	20% {
+   		opacity: 1;
+   	}
+
+   	85% {
+   		opacity: 1
+   	}
+   100% { 
+	 background: rgba(blue, 0.35);
+	 opacity: 0;
+   }
+}
+
+
+#websiteGroup {
+	padding-left: 0;
+	li {
+		padding:20px;
+		position: relative;
+
+
+		&:after {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include animation(newListItem 0.5s ease);
+		}
 	}
 }
