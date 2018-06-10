@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var Eos = require('eosjs') // Eos = require('./src')
+var Eos = require('eosjs'); // Eos = require('./src')
+var sleep = require('sleep');
 const shell = require('shelljs');
 
 wif = '5JRNfqrCrMkm6SXKeL4jWiZ8gsNqAgc9HCNE7qMLF8BuTQt3Jee'
@@ -60,30 +61,49 @@ app.get('/serveurl', function (req, res)   {
 
 })
 
-app.get('/registerurl', function (req, res)   {
-
+//app.get('/registerurl', function (req, res)   {
+//
   //returns Promise
-  eos.transaction({
-   actions: [
-     {
-       account: 'cdneos',
-       name: 'getbal',
-       authorization: [{
-         actor: 'rafal',
-         permission: 'active'
-       }],
-       data: {
-         owner: 'rafal'
-       }
-     }
-   ]
-  })
-
-})
-
-
+//  eos.transaction({
+//   actions: [
+//     {
+//       account: 'cdneos',
+//       name: 'getbal',
+//       authorization: [{
+//         actor: 'rafal',
+//         permission: 'active'
+//       }],
+//       data: {
+//         owner: 'rafal'
+//       }
+//     }
+//   ]
+//  })
+//
 //})
 
+
+
+app.get('/serveurl1/:url/:publisher/:cdnnode/:amount', function (req, res)   {
+  //const args = request.params.args
+  //console.log(args)
+  console.log("Called: serveurl");
+  console.log(req.params.url);
+  console.log(req.params.publisher);
+  console.log(req.params.cdnnode);
+  console.log(req.params.amount);
+  var cmd1 = 'cleos push action cdneos serveurl \x27[ \x22' + req.params.url + '\x22, \x22' + req.params.publisher + '\x22, \x22' + req.params.cdnnode + '\x22,' + req.params.amount + ']\x27 -p publisher1';
+  // var cmd =  'cleos push action cdneos serveurl \x27[ \x22www.hex.com\x22, \x22publisher1\x22, \x22cdnnode1\x22, 1 ]\x27 -p publisher1';
+
+  console.log(cmd1);
+  // sleep.sleep(4);
+  shell.exec(cmd1, function(code, stdout, stderr) {
+    console.log('Program output:', stdout);
+    res.send(stdout);
+    // shell.exit(1);
+  });
+
+})
 
 
 //this.eos.getActions('cdneos').then(function(res) {
@@ -130,7 +150,7 @@ app.get('/registerurl', function (req, res)   {
 //})
 
 
-var server = app.listen(3000, function () {
+var server = app.listen(3006, '0.0.0.0', function () {
 
   var host = server.address().address
   var port = server.address().port
