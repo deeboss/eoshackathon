@@ -62,7 +62,8 @@ function redirect_to_peer(req,res){
 
 function serve_or_redirect(req,res,filePath, content){
   var host=""+req.headers.host;
-  if(host.replace(config.nodePattern,"")==""){
+  //disable redirect
+  if(true || host.replace(config.nodePattern,"")==""){
     http200(req, res,filePath, content);
   }else{
     redirect_to_peer(req,res);
