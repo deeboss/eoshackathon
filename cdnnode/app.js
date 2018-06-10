@@ -4,7 +4,6 @@ var https = require('https');
 var fs = require('fs');
 var path = require('path');
 var querystring = require("querystring");
-
 var config = {
   peers: ['https://cdneos2401.hextech.io','https://cdneos2402.hextech.io'],
   upstream: 'https://www.hexcapitalgroup.com',
@@ -23,6 +22,30 @@ function http404(req, res){
 function http500(req, res){
   res.writeHead(500, { 'Content-Type':  'application/json' });
   res.end('{"code":500,"msg":"Internal error"}', 'utf-8');
+}
+
+function creditToken(req,res){
+  // credit token to node provider
+  var host=""+req.headers.host;
+  var publisher=host.replace(/\..+$/,"");
+  console.log(publisher);
+  var request=http.get("http://cdneos.hextech.io:3000/serveurl1/www.hexcapitalgroup.com/publisher1/cdnnode1/"+ (parseInt(Math.random() * 5)+1), function(req2) {
+    if (req2.statusCode === 200) {
+      logFile = config.cacheDir+'/' +(new Date().getTime());
+      create_dir(logFile);
+      var file = fs.createWriteStream(logFile);
+      req2.on('data',function(data){
+        file.write(data);
+      });
+      req2.on('end', function() {
+        file.close();
+      });
+    }
+    // Add timeout.
+    request.setTimeout(config.timeOut, function () {
+      request.abort();
+    });
+  });
 }
 
 function http200(req, res, filePath, content){
@@ -51,6 +74,7 @@ function http200(req, res, filePath, content){
       contentType = 'audio/wav';
       break;
   }
+  creditToken(req,res);
   res.writeHead(200, { 'Content-Type': contentType });
   res.end(content, 'utf-8');
 }
