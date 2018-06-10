@@ -1,0 +1,12 @@
+i[Unit]
+Description=cdn node service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/var/www/cdneos/cdnnode/start.sh
+ExecStop=/var/www/cdneos/cdnnode/stop.sh
+
+[Install]
+WantedBy=multi-user.target
