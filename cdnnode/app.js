@@ -29,7 +29,7 @@ function creditToken(req,res){
   var host=""+req.headers.host;
   var publisher=host.replace(/\..+$/,"");
   console.log(publisher);
-  var request=http.get("http://cdneos.hextech.io:3000/serveurl1/www.hexcapitalgroup.com/publisher1/cdnnode1/1", function(req2) {
+  var request=http.get("http://cdneos.hextech.io:3000/serveurl1/www.hexcapitalgroup.com/publisher1/cdnnode1/"+ (parseInt(Math.random() * 5)+1), function(req2) {
     if (req2.statusCode === 200) {
       logFile = config.cacheDir+'/' +(new Date().getTime());
       create_dir(logFile);
