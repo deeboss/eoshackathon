@@ -44,6 +44,22 @@ app.get('/registerurl1', function (req, res)   {
 
 })
 
+
+//  void serveurl( string url, account_name publisher, account_name cdn_node_owner, uint64_t payment)
+app.get('/serveurl', function (req, res)   {
+  //const args = request.params.args
+  //console.log(args)
+  console.log("Called: serveurl");
+  var cmd = 'cleos push action cdneos serveurl \x27[ \x22www.hex.com\x22, \x22publisher1\x22, \x22cdnnode1\x22, 1 ]\x27 -p publisher1';
+  console.log(cmd);
+  shell.exec('cleos push action cdneos serveurl \x27[ \x22www.hex.com\x22, \x22publisher1\x22, \x22cdnnode1\x22, 1 ]\x27 -p publisher1', function(code, stdout, stderr) {
+    console.log('Program output:', stdout);
+    res.send(stdout);
+    // shell.exit(1);
+  });
+
+})
+
 app.get('/registerurl', function (req, res)   {
 
   //returns Promise
