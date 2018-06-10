@@ -33,7 +33,7 @@ function http200(req, res, filePath, content){
       contentType = 'text/javascript';
       break;
     case '.svg':
-      contentTyepe = 'image/svg+xml';
+      contentType = 'image/svg+xml';
       break;
     case '.css':
       contentType = 'text/css';
@@ -65,8 +65,8 @@ function redirect_to_peer(req,res){
 
 function serve_or_redirect(req,res,filePath, content){
   var host=""+req.headers.host;
-  //disable redirect
-  if(true || host.replace(config.nodePattern,"")==""){
+  // redirect
+  if( host.replace(config.nodePattern,"")==""){
     http200(req, res,filePath, content);
   }else{
     redirect_to_peer(req,res);
@@ -111,7 +111,7 @@ function download_file(req,res,filePath){
 }
 
 function serveFile(req, res){
-  var filePath = config.cacheDir + escape_url(req.url);
+  var filePath = config.cacheDir + req.url;
   var host=""+req.headers.host;
   fs.readFile(filePath, function(error, content) {
     if (error) {
