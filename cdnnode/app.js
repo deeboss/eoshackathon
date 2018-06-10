@@ -8,7 +8,7 @@ var querystring = require("querystring");
 var config = {
   peers: ['https://cdneos2401.hextech.io','https://cdneos2402.hextech.io'],
   upstream: 'https://www.hexcapitalgroup.com',
-  port: 3000,
+  port: 3008,
   seed: 0,
   nodePattern: /(\w{1,}\d{4,}\.)[\s\S]+|^127(\.[\d]{1,3}){3}(:\d+)?/,
   timeOut: 12000,
